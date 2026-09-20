@@ -2,8 +2,8 @@ name: ci for simple go app
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - main
 
 jobs:
   build:

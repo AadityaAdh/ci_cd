@@ -1,0 +1,19 @@
+name: ci for simple go app
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build and push to docker hub for release
+        run: |
+          docker login -u ${{ secrets.USERNAME }} -p ${{ secrets.TOKEN }}
+          docker compose -f docker-compose.live.yaml build
+          docker compose -f docker-compose.live.yaml push || true

@@ -1,0 +1,9 @@
+services:
+  app:
+    image: aadityaadh/ci_cd
+    build:
+      context: ./deployment
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
